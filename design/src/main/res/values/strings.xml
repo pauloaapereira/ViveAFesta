@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="button_leading_icon">Button Leading Icon</string>
+    <string name="button_trailing_icon">Button Trailing Icon</string>
+    <string name="clear_text_field">Clear Text Field</string>
+    <string name="identification_text_field">Text Field Identification Icon</string>
+</resources>
