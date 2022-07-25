@@ -1,5 +1,5 @@
-import com.pp.ppcompose.buildsrc.Configs
-import com.pp.ppcompose.buildsrc.Compose
+import com.pp.viveafesta.buildsrc.Configs
+import com.pp.viveafesta.buildsrc.Compose
 
 plugins {
     id 'com.android.library'

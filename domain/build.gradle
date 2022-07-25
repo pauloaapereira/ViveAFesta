@@ -1,6 +1,6 @@
-import com.pp.ppcompose.buildsrc.Configs
-import com.pp.ppcompose.buildsrc.Libs
-import com.pp.ppcompose.buildsrc.Tests
+import com.pp.viveafesta.buildsrc.Configs
+import com.pp.viveafesta.buildsrc.Libs
+import com.pp.viveafesta.buildsrc.Tests
 
 plugins {
     id 'com.android.library'

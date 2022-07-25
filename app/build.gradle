@@ -1,8 +1,8 @@
-import com.pp.ppcompose.buildsrc.Compose
-import com.pp.ppcompose.buildsrc.Configs
-import com.pp.ppcompose.buildsrc.Core
-import com.pp.ppcompose.buildsrc.Libs
-import com.pp.ppcompose.buildsrc.Tests
+import com.pp.viveafesta.buildsrc.Compose
+import com.pp.viveafesta.buildsrc.Configs
+import com.pp.viveafesta.buildsrc.Core
+import com.pp.viveafesta.buildsrc.Libs
+import com.pp.viveafesta.buildsrc.Tests
 
 plugins {
     id 'com.android.application'
@@ -16,7 +16,7 @@ android {
     compileSdkVersion Configs.CompileSdkVersion
 
     defaultConfig {
-        applicationId "com.pp.ppcompose"
+        applicationId "com.pp.viveafesta"
         minSdkVersion Configs.MinSdkVersion
         targetSdkVersion Configs.TargetSdkVersion
         versionCode Configs.VersionCode

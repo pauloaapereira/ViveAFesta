@@ -11,17 +11,17 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pp.ppcompose">
+    package="com.pp.viveafesta">
 
     <application
-        android:name=".app.PPComposeApp"
+        android:name="com.pp.viveafesta.app.ViveAFestaApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidDevChallenge">
         <activity
-            android:name=".presentation.MainActivity"
+            android:name="com.pp.viveafesta.presentation.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AndroidDevChallenge.NoActionBar">
             <intent-filter>
