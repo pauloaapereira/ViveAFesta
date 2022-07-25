@@ -78,4 +78,10 @@ object Libs {
         const val gradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
     }
 
+    object ImageProcessing {
+        private const val version = "2.1.0"
+
+        const val coil = "io.coil-kt:coil-compose:$version"
+    }
+
 }

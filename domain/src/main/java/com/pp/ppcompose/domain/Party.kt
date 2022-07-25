@@ -14,3 +14,20 @@
  * limitations under the License.
  */
 package com.pp.ppcompose.domain
+
+import java.time.LocalDateTime
+
+data class Party(
+    val name: String,
+    val district: String,
+    val municipality: String,
+    val startDate: LocalDateTime,
+    val endDate: LocalDateTime,
+    val poster: String?,
+    val latitude: Double?,
+    val longitude: Double?,
+    val hasFood: Boolean,
+    val isPaid: Boolean,
+    val hasParking: Boolean,
+    val hasAmusement: Boolean,
+)
