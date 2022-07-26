@@ -15,14 +15,14 @@
  */
 package com.pp.viveafesta.domain
 
+import java.time.LocalDate
 import java.time.LocalDateTime
 
 data class Party(
     val name: String,
     val district: String,
     val municipality: String,
-    val startDate: LocalDateTime,
-    val endDate: LocalDateTime,
+    val dateRange: Pair<LocalDate, LocalDate>,
     val poster: String?,
     val latitude: Double?,
     val longitude: Double?,

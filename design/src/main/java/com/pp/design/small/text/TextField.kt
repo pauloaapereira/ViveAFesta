@@ -16,24 +16,35 @@
 package com.pp.design.small.text
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
 import com.pp.design.R
 import com.pp.design.background.LocalBaseContentColor
 import com.pp.design.core.animation.enabledAlpha
+import com.pp.design.medium.card.Card
 import com.pp.design.small.icon.Icon
 
 object TextField {
@@ -52,7 +63,7 @@ object TextField {
         onValueChange: (String) -> Unit
     ) {
         val contentColor = LocalBaseContentColor.current
-        val view = LocalView.current
+        val fm = LocalFocusManager.current
 
         OutlinedTextField(
             modifier = modifier
@@ -66,11 +77,13 @@ object TextField {
                 onValueChange(newQuery)
             },
             label = { Text(text = label) },
-            leadingIcon = {
-                Icon.Primary(
-                    iconRes = leadingIcon,
-                    contentDescription = stringResource(R.string.identification_text_field)
-                )
+            leadingIcon = leadingIcon?.let {
+                {
+                    Icon.Primary(
+                        iconRes = leadingIcon,
+                        contentDescription = stringResource(R.string.identification_text_field)
+                    )
+                }
             },
             trailingIcon = {
                 Icon.Button(
@@ -78,7 +91,7 @@ object TextField {
                     contentDescription = stringResource(R.string.identification_text_field)
                 ) {
                     if (text.isBlank()) {
-                        view.clearFocus()
+                        fm.clearFocus()
                     }
                     onValueChange("")
                 }
@@ -109,5 +122,66 @@ object TextField {
             ),
             enabled = isEnabled
         )
+    }
+
+    @Composable
+    fun DatePicker(
+        modifier: Modifier = Modifier,
+        text: String,
+        label: String,
+        isEnabled: Boolean = true,
+        @DrawableRes leadingIcon: Int? = null,
+        onValueChange: (String) -> Unit,
+        onClick: () -> Unit
+    ) {
+        val contentColor = LocalBaseContentColor.current
+
+        Box {
+            OutlinedTextField(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .enabledAlpha(isEnabled),
+                value = text,
+                onValueChange = { newQuery ->
+                    onValueChange(newQuery)
+                },
+                label = { Text(text = label) },
+                leadingIcon = leadingIcon?.let {
+                    {
+                        Icon.Primary(
+                            iconRes = leadingIcon,
+                            contentDescription = stringResource(R.string.identification_text_field)
+                        )
+                    }
+                },
+                trailingIcon = {
+                    Icon.Button(
+                        iconRes = R.drawable.ic_pick_date,
+                        contentDescription = stringResource(R.string.identification_text_field),
+                        onClick = onClick
+                    )
+                },
+                textStyle = MaterialTheme.typography.subtitle1,
+                singleLine = true,
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    textColor = contentColor,
+                    disabledTextColor = contentColor.copy(alpha = ContentAlpha.disabled),
+                    cursorColor = contentColor,
+                    errorCursorColor = MaterialTheme.colors.error,
+                    focusedBorderColor = contentColor,
+                    unfocusedBorderColor = contentColor,
+                    disabledBorderColor = contentColor.copy(alpha = ContentAlpha.disabled),
+                    errorBorderColor = MaterialTheme.colors.error,
+                    focusedLabelColor = contentColor,
+                    unfocusedLabelColor = contentColor,
+                    disabledLabelColor = contentColor,
+                    errorLabelColor = MaterialTheme.colors.error,
+                    placeholderColor = contentColor,
+                    disabledPlaceholderColor = contentColor.copy(ContentAlpha.disabled)
+                ),
+                enabled = isEnabled
+            )
+            Box(modifier = Modifier.matchParentSize().clickable(onClick = onClick))
+        }
     }
 }

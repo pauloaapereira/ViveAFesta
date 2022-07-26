@@ -59,6 +59,7 @@ object AppBar {
         modifier: Modifier = Modifier,
         shape: Shape? = null,
         isScrollable: Boolean = false,
+        horizontalArrangement: Arrangement.Horizontal = Arrangement.spacedBy(16.dp),
         content: @Composable RowScope.() -> Unit
     ) {
         Surface(
@@ -77,7 +78,7 @@ object AppBar {
                         else
                             Modifier
                     },
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalArrangement = horizontalArrangement,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 content()

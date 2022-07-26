@@ -76,6 +76,7 @@ dependencies {
     implementation Libs.Accompanist.insets
     implementation Libs.GoogleLocation.location
     implementation Libs.ImageProcessing.coil
+    implementation Libs.Accompanist.pager
 
     implementation Libs.Hilt.library
     kapt Libs.Hilt.googleAndroidCompiler

@@ -13,19 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.pp.viveafesta.domain.repository
+package com.pp.viveafesta.domain.usecases
 
 import com.pp.viveafesta.domain.Party
+import com.pp.viveafesta.domain.repository.PartyRepository
 import java.time.LocalDate
 import java.time.LocalDateTime
+import javax.inject.Inject
 
-interface PartyRepository {
-    suspend fun getParties(
-        name: String? = null,
-        municipality: String? = null,
-        district: String? = null,
-        dates: Pair<LocalDate, LocalDate>? = null,
-    ): List<Party>
-
-    suspend fun addParty(party: Party)
+class AddParty @Inject constructor(
+    private val partyRepository: PartyRepository
+) {
+    suspend operator fun invoke(party: Party) {
+        partyRepository.addParty(party)
+    }
 }

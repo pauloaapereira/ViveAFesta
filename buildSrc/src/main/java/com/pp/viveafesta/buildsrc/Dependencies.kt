@@ -63,6 +63,7 @@ object Libs {
 
     object Accompanist {
         const val insets = "com.google.accompanist:accompanist-insets:0.24.13-rc"
+        const val pager = "com.google.accompanist:accompanist-pager:0.24.13-rc"
     }
 
     object GoogleLocation {

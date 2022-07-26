@@ -1,14 +1,28 @@
+/*
+ * Copyright 2022 Paulo Pereira
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.pp.viveafesta.presentation.models
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.location.Location
 import android.util.Base64
-import com.pp.viveafesta.domain.Party
 import com.pp.viveafesta.domain.Mapper
-import java.time.LocalDateTime
+import com.pp.viveafesta.domain.Party
+import java.time.LocalDate
 import javax.inject.Inject
-
 
 class ViewPartyMapper @Inject constructor() : Mapper<Party, ViewParty> {
     override fun mapFrom(input: Party): ViewParty =
@@ -16,8 +30,8 @@ class ViewPartyMapper @Inject constructor() : Mapper<Party, ViewParty> {
             name = input.name,
             district = input.district,
             municipality = input.municipality,
-            dateRange = "${input.startDate} to ${input.endDate}",
-            poster = decodeBase64(input.poster),
+            dateRange = "${input.dateRange.first} to ${input.dateRange.second}",
+            poster = input.poster?.let { decodeBase64(input.poster) },
             location = if (input.latitude != null && input.longitude != null) {
                 Location("").apply {
                     latitude = input.latitude!!
@@ -35,8 +49,12 @@ class ViewPartyMapper @Inject constructor() : Mapper<Party, ViewParty> {
             name = input.name,
             district = input.district,
             municipality = input.municipality,
-            startDate = LocalDateTime.parse(input.dateRange.split(" to ").getOrNull(0)),
-            endDate = LocalDateTime.parse(input.dateRange.split(" to ").getOrNull(1)),
+            dateRange = with(input.dateRange.split(" to ")) {
+                Pair(
+                    LocalDate.parse(getOrNull(0)),
+                    LocalDate.parse(getOrNull(1))
+                )
+            },
             poster = input.poster?.toString(),
             latitude = input.location?.latitude,
             longitude = input.location?.longitude,

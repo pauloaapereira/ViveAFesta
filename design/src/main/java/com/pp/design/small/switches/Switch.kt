@@ -59,7 +59,6 @@ object Switch {
             modifier = modifier
                 .clip(CircleShape)
                 .clickable { check(!isChecked) }
-                .padding(8.dp)
                 .enabledAlpha(isEnabled),
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically

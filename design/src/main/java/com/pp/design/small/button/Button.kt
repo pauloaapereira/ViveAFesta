@@ -16,6 +16,7 @@
 package com.pp.design.small.button
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -34,6 +35,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -49,6 +51,8 @@ object Button {
     @Composable
     fun Fab(
         modifier: Modifier = Modifier,
+        outerModifier: Modifier = Modifier,
+        backgroundColor: Color? = null,
         text: String = "",
         @DrawableRes icon: Int? = null,
         enabled: Boolean = true,
@@ -61,6 +65,8 @@ object Button {
             modifier = modifier
                 .clip(shape)
                 .border(2.dp, contentColor, shape = shape),
+            outerModifier = outerModifier,
+            backgroundColor = backgroundColor,
             onClick = { onClick() },
             isEnabled = enabled,
         ) {
@@ -149,6 +155,8 @@ object Button {
     @Composable
     private fun ComposifyButton(
         modifier: Modifier = Modifier,
+        outerModifier: Modifier = Modifier,
+        backgroundColor: Color? = null,
         isEnabled: Boolean = true,
         onClick: () -> Unit,
         content: @Composable () -> Unit
@@ -156,7 +164,7 @@ object Button {
         var isPressing by remember { mutableStateOf(false) }
 
         Box(
-            modifier = Modifier
+            modifier = outerModifier
                 .enabledAlpha(isEnabled)
                 .pressedScale(isPressing)
         ) {
@@ -165,8 +173,7 @@ object Button {
                     .wrapContentSize()
                     .clickableTrackingPress(onPressChanged = { isPressing = it }) {
                         if (isEnabled) onClick()
-                    }
-                    .padding(16.dp),
+                    }.then(backgroundColor?.let { Modifier.background(backgroundColor) } ?: Modifier).padding(16.dp),
                 contentAlignment = Alignment.Center
             ) {
                 content()
