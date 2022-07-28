@@ -42,23 +42,24 @@ object Switch {
     fun Primary(
         modifier: Modifier = Modifier,
         text: String,
+        isChecked: Boolean = false,
         isEnabled: Boolean = true,
         onCheckedChange: (Boolean) -> Unit
     ) {
         val backgroundColor = LocalBaseColor.current
         val contentColor = LocalBaseContentColor.current
-        var isChecked by remember { mutableStateOf(false) }
+        var isCheckedState by remember { mutableStateOf(isChecked) }
 
         fun check(checked: Boolean) {
             if (!isEnabled) return
-            isChecked = checked
+            isCheckedState = checked
             onCheckedChange(checked)
         }
 
         Row(
             modifier = modifier
                 .clip(CircleShape)
-                .clickable { check(!isChecked) }
+                .clickable { check(!isCheckedState) }
                 .enabledAlpha(isEnabled),
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
@@ -67,7 +68,7 @@ object Switch {
             Switch(
                 modifier = Modifier.padding(top = 6.dp),
                 enabled = isEnabled,
-                checked = isChecked,
+                checked = isCheckedState,
                 onCheckedChange = { checked ->
                     check(checked)
                 },

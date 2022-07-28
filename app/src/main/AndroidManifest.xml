@@ -13,6 +13,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pp.viveafesta">
 
+    <uses-feature android:name="android.hardware.camera.any" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:name="com.pp.viveafesta.app.ViveAFestaApp"
         android:allowBackup="true"
@@ -30,6 +33,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".presentation.CameraActivity" />
     </application>
+
 
 </manifest>

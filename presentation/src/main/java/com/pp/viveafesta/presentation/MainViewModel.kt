@@ -63,37 +63,6 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun addParty(
-        name: String,
-        district: String,
-        municipality: String,
-        dateRange: String,
-        poster: Bitmap?,
-        location: Location?,
-        hasFood: Boolean,
-        isPaid: Boolean,
-        hasParking: Boolean,
-        hasAmusement: Boolean
-    ) {
-        val viewParty = ViewParty(
-            name = name,
-            district = district,
-            municipality = municipality,
-            dateRange = dateRange,
-            poster = poster,
-            location = location,
-            hasFood = hasFood,
-            isPaid = isPaid,
-            hasParking = hasParking,
-            hasAmusement = hasAmusement,
-        )
-
-        viewModelScope.launch {
-            addParty(viewPartyMapper.mapTo(viewParty))
-            parties.add(viewParty)
-        }
-    }
-
     fun applyFilters(
         name: String? = null,
         district: String? = null,

@@ -94,6 +94,7 @@ dependencies {
     implementation Compose.tooling
     implementation Compose.runtime
     implementation Compose.hiltNavigation
+    implementation Compose.navigationCompose
     implementation Libs.Lottie.lottie
     implementation Libs.Accompanist.insets
     implementation Libs.GoogleLocation.location

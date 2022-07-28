@@ -72,11 +72,15 @@ dependencies {
     implementation Compose.tooling
     implementation Compose.runtime
     implementation Compose.hiltNavigation
+    implementation Compose.navigationCompose
     implementation Libs.Lottie.lottie
     implementation Libs.Accompanist.insets
     implementation Libs.GoogleLocation.location
     implementation Libs.ImageProcessing.coil
     implementation Libs.Accompanist.pager
+    implementation Libs.CameraX.camera
+    implementation Libs.CameraX.lifecycle
+    implementation Libs.CameraX.view
 
     implementation Libs.Hilt.library
     kapt Libs.Hilt.googleAndroidCompiler

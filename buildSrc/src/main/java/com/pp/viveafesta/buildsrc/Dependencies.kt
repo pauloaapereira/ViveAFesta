@@ -26,7 +26,7 @@ object Compose {
     const val uiUtil = "androidx.compose.ui:ui-util:$composeVersion"
     const val uiTest = "androidx.compose.ui:ui-test-junit4:$composeVersion"
     const val activityCompose = "androidx.activity:activity-compose:1.6.0-alpha05"
-    const val navigationCompose = "androidx.navigation:navigation-compose:2.5.0-alpha02"
+    const val navigationCompose = "androidx.navigation:navigation-compose:2.5.0"
     const val hiltNavigation = "androidx.hilt:hilt-navigation-compose:1.0.0"
 }
 
@@ -85,4 +85,11 @@ object Libs {
         const val coil = "io.coil-kt:coil-compose:$version"
     }
 
+    object CameraX {
+        private const val version = "1.1.0"
+
+        const val camera = "androidx.camera:camera-camera2:$version"
+        const val lifecycle = "androidx.camera:camera-lifecycle:$version"
+        const val view = "androidx.camera:camera-view:$version"
+    }
 }
